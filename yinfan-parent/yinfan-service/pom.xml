@@ -14,6 +14,7 @@
     <description>商城各大微服务的父工程</description>
     <modules>
         <module>yinfan-service-goods</module>
+        <module>yinfan-service-file</module>
     </modules>
 
     <dependencies>
