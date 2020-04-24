@@ -17,6 +17,7 @@
         <module>yinfan-eureka</module>
         <module>yinfan-common</module>
         <module>yinfan-common-db</module>
+        <module>yinfan-user-oauth</module>
     </modules>
 
     <parent>

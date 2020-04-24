@@ -23,3 +23,6 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.yinfan.goods.pojo
+
+
+Random.num: ${random.value}

@@ -1,4 +1,4 @@
-package com.yinfan.controller;
+package com.yinfan.search.controller;
 
 import com.yinfan.file.FastDFSFile;
 import com.yinfan.util.FastDFSUtil;

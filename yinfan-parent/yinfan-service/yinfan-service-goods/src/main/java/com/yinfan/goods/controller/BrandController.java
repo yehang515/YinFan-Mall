@@ -3,12 +3,14 @@ package com.yinfan.goods.controller;
 import com.github.pagehelper.PageInfo;
 import com.yinfan.goods.pojo.Brand;
 import com.yinfan.goods.service.BrandService;
+import com.yinfan.goods.service.TokenService;
 import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /****
@@ -25,6 +27,25 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
+    @Resource
+    private TokenService tokenService;
+
+
+
+
+    @GetMapping("/get/token")
+    public String  getToken(){
+        String token = tokenService.createToken();
+//        if (StrUtil.isNotEmpty(token)) {
+//            ResultVo resultVo = new ResultVo();
+//            resultVo.setCode(Constant.code_success);
+//            resultVo.setMessage(Constant.SUCCESS);
+//            resultVo.setData(token);
+//            return JSONUtil.toJsonStr(resultVo);
+//        }
+        return token;
+    }
+
     /***
      * Brand分页条件搜索实现
      * @param brand
@@ -32,6 +53,7 @@ public class BrandController {
      * @param size
      * @return
      */
+
     @ApiOperation(value = "Brand条件分页查询",notes = "分页条件查询Brand方法详情",tags = {"BrandController"})
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "page", value = "当前页", required = true, dataType = "Integer"),
@@ -139,6 +161,7 @@ public class BrandController {
      */
     @ApiOperation(value = "查询所有Brand",notes = "查询所Brand有方法详情",tags = {"BrandController"})
     @GetMapping
+   // @AutoIdempotent
     public Result<List<Brand>> findAll(){
         //调用BrandService实现查询所有Brand
         List<Brand> list = brandService.findAll();
