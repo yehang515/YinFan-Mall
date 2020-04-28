@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      name: yinfan
+      profile: dev
+      label: master
+      uri: http://localhost:12000
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka/
+

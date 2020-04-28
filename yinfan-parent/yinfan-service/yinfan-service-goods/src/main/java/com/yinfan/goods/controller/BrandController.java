@@ -8,6 +8,8 @@ import entity.Result;
 import entity.StatusCode;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/brand")
 @CrossOrigin
+@RefreshScope
 public class BrandController {
 
     @Autowired
@@ -30,7 +33,8 @@ public class BrandController {
     @Resource
     private TokenService tokenService;
 
-
+    @Value("${test.name}")
+    private String name;
 
 
     @GetMapping("/get/token")
@@ -163,6 +167,7 @@ public class BrandController {
     @GetMapping
    // @AutoIdempotent
     public Result<List<Brand>> findAll(){
+        System.out.println(name);
         //调用BrandService实现查询所有Brand
         List<Brand> list = brandService.findAll();
         return new Result<List<Brand>>(true, StatusCode.OK,"查询成功",list) ;
